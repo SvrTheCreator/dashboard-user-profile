@@ -1,0 +1,771 @@
+.flex-container(@direction, @justify, @aling, @gap) {
+    display: flex;
+    flex-direction: @direction;
+    justify-content: @justify;
+    align-items: @aling;
+    gap: @gap;
+}
+
+.main-dashboard-img(@padding, @float, @margin) {
+    padding: @padding;
+    float: @float;
+    margin: @margin;
+    box-shadow: 1px 1px 3px 5px rgba(153, 153, 153, 0.26);
+}
+
+.task-list-btn() {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+}
+
+body {
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.container {
+    margin: 0% auto;
+    max-width: 499px;
+}
+
+.wrapper {
+    position: relative;
+
+    &__burger-checkbox {
+        & img {
+            width: 35px;
+        }
+
+        position: absolute;
+        top: 45px;
+        left: 40px;
+    }
+}
+
+.wrapper__burger-checkbox__input {
+    display: none;
+
+    &:checked~.LSB {
+        display: block;
+    }
+}
+
+
+.LSB {
+    background-color: rgb(246, 246, 246);
+    box-shadow: 4px 1px 10px 0px #000000;
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    z-index: 10;
+    padding: 15px;
+    grid-area: LSB;
+
+    & a {
+        margin-top: 10px;
+        text-decoration: none;
+        color: rgb(137, 137, 137);
+        font-size: 15px;
+    }
+
+    & h4 {
+        margin: 0px;
+        padding: 25px;
+        border-bottom: 1px solid rgb(188, 188, 188);
+    }
+
+    &__dashboard,
+    &__user-profile,
+    &__maps,
+    &__notifications,
+    &__support {
+        .flex-container(row, flex-start, center, 0);
+        padding: 5px 65px 5px 5px;
+        fill: rgb(137, 137, 137);
+
+        & svg {
+            height: 20px;
+        }
+    }
+}
+
+.LSB__dashboard__active,
+.LSB__user-profile_active {
+    color: white !important;
+    background-color: rgb(192, 32, 86);
+    box-shadow: 4px 1px 10px 0px #000000;
+}
+
+.LSB__user-profile_active svg,
+.LSB__dashboard__active svg {
+    fill: white;
+}
+
+.main {
+    background-color: rgb(231, 231, 231);
+    padding: 40px 40px 40px 40px;
+    grid-area: main;
+    width: 100%;
+}
+
+.main-dashboard {
+    box-sizing: border-box;
+
+    & h4 {
+        margin: 0;
+    }
+
+    &__title {
+        grid-area: main-dashboard__title;
+        font-size: 30px;
+        position: relative;
+        top: 0px;
+        left: 55px;
+        max-width: 200px;
+    }
+
+    & h2 {
+        font-weight: normal;
+        margin-top: 10px;
+        text-align: end;
+    }
+
+    &__item-usable,
+    &__item-cash,
+    &__item-solved,
+    &__item-subscribers,
+    &__item-sales,
+    &__item-email,
+    &__item-tasks,
+    &__item-task-list,
+    &__item-employees-list {
+        margin-top: 55px;
+        background-color: white;
+        box-shadow: 1px 1px 3px 5px rgba(153, 153, 153, 0.26);
+        padding: 20px;
+        width: 100%;
+
+        &__space,
+        &__receipts,
+        &__problems,
+        &__followers {
+            border-bottom: 1px solid rgb(188, 188, 188);
+            // padding: 20px;
+
+            &__title {
+                // .flex-container(row, flex-end, flex-start, 0);
+                text-align: end;
+            }
+
+        }
+
+        &__note {
+            .flex-container(row, flex-start, center, 0);
+            margin-top: 20px;
+
+            & img {
+                margin-right: 10px;
+            }
+        }
+
+        &__text {
+            font-size: 13px;
+        }
+    }
+
+    &__item-usable {
+        grid-area: item-usable;
+
+        &__img {
+            & img {
+                .main-dashboard-img(25px, left, -40px 0 20px auto);
+                background-color: rgb(58, 129, 0);
+            }
+        }
+
+    }
+
+    &__item-cash {
+        grid-area: item-cash;
+
+        &__img {
+            & img {
+                .main-dashboard-img(25px, left, -40px 0 20px auto);
+                background-color: rgb(212, 149, 28);
+            }
+        }
+    }
+
+    &__item-solved {
+        grid-area: item-solved;
+
+        &__img {
+            & img {
+                .main-dashboard-img(25px, left, -40px 0 20px auto);
+                background-color: rgb(31, 66, 141);
+            }
+        }
+    }
+
+    &__item-subscribers {
+        grid-area: item-subscribers;
+
+        &__img {
+            & img {
+                .main-dashboard-img(25px, left, -40px 0 20px auto);
+                background-color: rgb(189, 25, 75);
+            }
+        }
+    }
+
+    &__item-sales,
+    &__item-email,
+    &__item-tasks {
+        &__img {
+            .main-dashboard-img(25px, none, -40px auto);
+
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__daily,
+        &__subscribers,
+        &__completed {
+            margin-top: 60px;
+            border-bottom: 1px solid rgb(188, 188, 188);
+
+            // & img {
+            //     .main-dashboard-img(25px, none, -40px auto);
+            //     width: 100%;
+            //     height: 100%;
+            // }
+
+            &__subtitle {
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+
+        }
+
+        &__note {
+            .flex-container(row, flex-start, center, 0);
+            margin-top: 20px;
+        }
+
+        &__text {
+            font-size: 13px;
+        }
+    }
+
+    &__item-sales {
+        grid-area: item-sales;
+
+        &__img {
+            background-color: rgb(58, 129, 0);
+        }
+    }
+
+    &__item-email {
+        grid-area: item-email;
+
+        &__img {
+            background-color: rgb(212, 149, 28);
+        }
+    }
+
+    &__item-tasks {
+        grid-area: item-tasks;
+
+        &__img {
+            background-color: rgb(31, 66, 141);
+        }
+    }
+
+    &__item-task-list {
+        grid-area: item-task-list;
+        width: 100%;
+
+        &__header {
+            // .flex-container(row, center, center, 10px);
+            color: white;
+            background-color: rgb(212, 149, 28);
+            padding: 20px 15px;
+            margin: -40px auto;
+
+            & a {
+                text-decoration: none;
+                color: white;
+                padding: 10px 5px;
+
+                & img {
+                    margin-right: 5px;
+                }
+
+                &:hover {
+                    background-color: rgb(219, 175, 94);
+                }
+            }
+        }
+
+        &__main {
+            margin-top: 40px;
+
+            &__items:not(:last-child) {
+                border-bottom: 1px solid grey;
+            }
+
+            &__items {
+                .flex-container(row, space-between, center, 20px);
+                padding: 25px 0;
+
+                &__checkbox {
+                    .flex-container(row, flex-start, center, 0px);
+
+                    & input {
+                        margin-right: 15px
+                    }
+                }
+
+                &__button {
+                    .flex-container(row, flex-start, flex-start, 20px);
+
+                    &__1 {
+                        .task-list-btn();
+                        background-image: url(img/edit.png);
+                    }
+
+                    &__2 {
+                        .task-list-btn();
+                        background-image: url(img/remove.png);
+                    }
+                }
+            }
+        }
+    }
+
+    &__item-employees-list {
+        grid-area: item-employees-list;
+
+        &__header {
+            .flex-container(column, flex-start, flex-start, 10px);
+            color: white;
+            padding: 20px;
+            background-color: rgb(31, 66, 141);
+            margin: -40px auto;
+        }
+
+        &__main {
+            margin-top: 50px;
+
+            &__items:first-child {
+                color: rgb(5, 85, 85);
+            }
+
+            &__items:not(:last-child) {
+                border-bottom: 1px solid grey;
+            }
+
+            &__items {
+                display: grid;
+                grid-template-columns: 0.3fr 1fr 0.7fr 1fr;
+                gap: 10px;
+                padding: 20px 10px;
+
+                &:not(:first-child):hover {
+                    background-color: rgb(223, 223, 223);
+                }
+            }
+        }
+    }
+}
+
+.main-footer {
+    grid-area: main-footer;
+    background-color: rgb(231, 231, 231);
+    border-top: 1px solid grey;
+    padding: 40px;
+    .flex-container(row, space-between, center, 10px);
+
+    &__links {
+        & a {
+            padding: 5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+            font-weight: bolder;
+            font-size: 16px;
+        }
+    }
+}
+
+.main-profile {
+    & h4 {
+        margin: 0;
+    }
+
+    &__title {
+        grid-area: main-profile__title;
+        font-size: 30px;
+        position: relative;
+        top: 0px;
+        left: 55px;
+        max-width: 200px;
+    }
+
+    &__quote,
+    &__registration {
+        margin-top: 55px;
+        background-color: white;
+        box-shadow: 1px 1px 3px 5px rgba(153, 153, 153, 0.26);
+        padding: 20px;
+    }
+
+    &__quote {
+        grid-area: quote;
+
+        &__avatar {
+            .flex-container(row, center, flex-start, 0);
+
+            &__icon img {
+                border-radius: 50%;
+                height: 150px;
+                margin: -60px auto 0;
+            }
+        }
+
+        &__content {
+            margin-top: 20px;
+            gap: 15px;
+            text-align: center;
+
+            &__subtitle,
+            &__text,
+            &__name {
+                margin-top: 20px;
+            }
+
+            &__name {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__registration {
+        grid-area: registration;
+
+        &__header {
+            color: white;
+            background-color: rgb(189, 25, 75);
+            padding: 15px;
+            margin: -40px 0px 0;
+        }
+
+        &__content {
+            grid-area: content;
+
+            &__btn {
+                text-transform: uppercase;
+                color: white;
+                border: none;
+                background-color: rgb(189, 25, 75);
+                padding: 10px 45px;
+                cursor: pointer;
+                grid-area: btn;
+            }
+
+            & input {
+                border: none;
+                outline: none;
+                border-bottom: 1px solid grey;
+            }
+
+            &__company,
+            &__username,
+            &__email,
+            &__first-name,
+            &__last-name,
+            &__address,
+            &__city,
+            &__country,
+            &__postal-code,
+            &__about-me {
+                .flex-container(column, flex-start, stretch, 10px);
+                padding: 10px 0;
+            }
+
+            & textarea {
+                min-width: 100%;
+                max-width: 100%;
+                min-height: 50px;
+            }
+
+            &__company {
+                grid-area: company;
+            }
+
+            &__username {
+                grid-area: username;
+            }
+
+            &__email {
+                grid-area: email;
+            }
+
+            &__first-name {
+                grid-area: first-name;
+            }
+
+            &__last-name {
+                grid-area: last-name;
+            }
+
+            &__address {
+                grid-area: address;
+            }
+
+            &__city {
+                grid-area: city;
+            }
+
+            &__country {
+                grid-area: country;
+            }
+
+            &__postal-code {
+                grid-area: postal-code;
+            }
+
+            &__about-me {
+                grid-area: about-me;
+            }
+        }
+    }
+}
+
+@media (min-width:320px) {
+    .main-dashboard__item-task-list__main__items__button {
+        gap: 10px;
+    }
+}
+
+@media (min-width: 500px) {
+    .container {
+        max-width: 649px;
+    }
+
+    .main-dashboard__item-task-list__main__items__button {
+        gap: 20px;
+    }
+
+
+    .LSB {
+        & a {
+            font-size: 16px;
+        }
+
+        & svg {
+            height: 25px;
+        }
+    }
+
+    .main-dashboard {
+        display: grid;
+        gap: 20px;
+        grid-template-areas: "main-dashboard__title main-dashboard__title"
+            "item-usable item-cash"
+            "item-solved item-subscribers"
+            "item-sales item-sales"
+            "item-email item-email"
+            "item-tasks item-tasks"
+            "item-task-list item-task-list"
+            "item-employees-list item-employees-list";
+
+    }
+
+    & form {
+        margin-top: 20px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "company company username username email email"
+            "first-name first-name first-name last-name last-name last-name"
+            "address address address address address address"
+            "city city country country postal-code postal-code"
+            "about-me about-me about-me about-me about-me about-me"
+            ". . . . . btn"
+        ;
+    }
+}
+
+@media (min-width: 650px) {
+    .container {
+        max-width: 799px;
+    }
+
+    .LSB {
+        & a {
+            font-size: 17px;
+        }
+
+        & svg {
+            height: 30px;
+        }
+
+        & h4 {
+            font-size: 20px;
+        }
+    }
+
+    .main-dashboard {
+        display: grid;
+        gap: 20px;
+        grid-template-areas: "main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title"
+            "item-usable item-usable item-usable item-cash item-cash item-cash"
+            "item-solved item-solved item-solved item-subscribers item-subscribers item-subscribers"
+            "item-sales item-sales item-email item-email item-tasks item-tasks"
+            "item-task-list item-task-list item-task-list item-task-list item-task-list item-task-list"
+            "item-employees-list item-employees-list item-employees-list item-employees-list item-employees-list item-employees-list";
+    }
+}
+
+@media (min-width:650px) {
+    .container {
+        max-width: 799px;
+    }
+
+}
+
+@media (min-width: 800px) {
+    .container {
+        max-width: 999px;
+    }
+
+    & form {
+        margin-top: 20px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "company company username username email email"
+            "first-name first-name first-name last-name last-name last-name"
+            "address address address address address address"
+            "city city country country postal-code postal-code"
+            "about-me about-me about-me about-me about-me about-me"
+            ". . . . . btn"
+        ;
+    }
+
+    .LSB {
+        & a {
+            font-size: 18px;
+        }
+
+        & svg {
+            height: 35px;
+        }
+
+        & h4 {
+            font-size: 30px;
+        }
+    }
+
+    .main-profile {
+        &__title {
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+    }
+
+    .main-dashboard {
+        &__title {
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+    }
+
+    .wrapper {
+        &__burger-checkbox {
+            display: none;
+        }
+
+        display: grid;
+        grid-template-columns: 0.1fr 1fr 1fr 1fr;
+        grid-template-areas: "LSB main main main"
+        "LSB main-footer main-footer main-footer ";
+    }
+
+    .LSB {
+        display: block;
+        position: sticky;
+        top: 0;
+        left: 0;
+        height: 100vh;
+    }
+}
+
+@media (min-width: 1000px) {
+    .container {
+        max-width: none;
+    }
+
+    .LSB {
+
+        & a {
+            font-size: 19px;
+        }
+
+        & svg {
+            height: 40px;
+        }
+
+        & h4 {
+            font-size: 40px;
+        }
+    }
+
+    .main-profile {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+        gap: 20px;
+        grid-template-areas: "main-profile__title main-profile__title main-profile__title main-profile__title main-profile__title"
+            "registration registration registration registration quote"
+            "registration registration registration registration  .";
+
+    }
+
+    .main-dashboard {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title main-dashboard__title"
+            "item-usable item-usable item-usable item-cash item-cash item-cash item-solved item-solved item-solved item-subscribers item-subscribers item-subscribers"
+            "item-sales item-sales item-sales item-sales item-email item-email item-email item-email item-tasks item-tasks item-tasks item-tasks"
+            "item-task-list item-task-list item-task-list item-task-list item-task-list item-task-list item-employees-list item-employees-list item-employees-list item-employees-list item-employees-list item-employees-list"
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 0.1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "LSB main main main main main"
+            "LSB main-footer main-footer main-footer main-footer main-footer";
+    }
+}
